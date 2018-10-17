@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectMobileApp.View;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

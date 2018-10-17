@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <UseShortFileNames>True</UseShortFileNames>
+    <OutputPath>C:\Xamarin\Droid\bin\Debug\</OutputPath>
+    <IntermediateOutputPath>C:\Xamarin\Droid\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <UseShortFileNames>True</UseShortFileNames>
+    <OutputPath>C:\Xamarin\Droid\bin\Debug\</OutputPath>
+    <IntermediateOutputPath>C:\Xamarin\Droid\obj\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
