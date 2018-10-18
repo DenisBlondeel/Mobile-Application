@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjectMobileApp.Model
+﻿namespace ProjectMobileApp.Model
 {
     public enum Category
     {

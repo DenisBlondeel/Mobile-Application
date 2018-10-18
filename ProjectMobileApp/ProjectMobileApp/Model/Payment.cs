@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectMobileApp.Model
 {
     public class Payment
     {
-        private static int IDincrement = 0;
+        private static int IdIncrement = 0;
         public int Id { get; set; }
         private string name;
         private DateTime date { get; set; }
@@ -25,7 +23,10 @@ namespace ProjectMobileApp.Model
                 {
                     throw new DomainException($"{nameof(value)} must not be empty.");
                 }
-                else this.name = value;
+                else
+                {
+                    this.name = value;
+                }
             }
         }
         public DateTime Date
@@ -37,7 +38,10 @@ namespace ProjectMobileApp.Model
                 {
                     throw new DomainException($"The date has to be in the past.");
                 }
-                else this.date = value;
+                else
+                {
+                    this.date = value;
+                }
             }
         }
         public Category Category
@@ -49,7 +53,10 @@ namespace ProjectMobileApp.Model
                 {
                     this.category = Category;
                 }
-                else throw new DomainException($"The Category of this Payment is already equal to {value.ToString()}");
+                else
+                {
+                    throw new DomainException($"The Category of this Payment is already equal to {value.ToString()}");
+                }
             }
         }
         public double Amount
@@ -61,7 +68,10 @@ namespace ProjectMobileApp.Model
                 {
                     this.amount = value;
                 }
-                else throw new DomainException("The amount has to be a positive value.");
+                else
+                {
+                    throw new DomainException("The amount has to be a positive value.");
+                }
             }
         }
 
@@ -90,7 +100,7 @@ namespace ProjectMobileApp.Model
         /// <returns>A new id for a Payment</returns>
         public static int getNewId()
         {
-            return ++IDincrement;
+            return IdIncrement++;
         }
         /// <summary>
         /// Parses a date in string format to date format. Throws a DomainException if invalid.
@@ -103,7 +113,10 @@ namespace ProjectMobileApp.Model
             {
                 return temp;
             }
-            else throw new DomainException($"{date} is not a valid date.");
+            else
+            {
+                throw new DomainException($"{date} is not a valid date.");
+            }
         }
         /// <summary>
         /// Parses a Category in string format to Category format. Throws a DomainException if invalid.
@@ -116,7 +129,10 @@ namespace ProjectMobileApp.Model
             {
                 return temp;
             }
-            else throw new DomainException($"{category} is not a valid category.");
+            else
+            {
+                throw new DomainException($"{category} is not a valid category.");
+            }
         }
     }
 }
