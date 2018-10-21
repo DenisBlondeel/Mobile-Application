@@ -2,13 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProjectMobileApp"
+             xmlns:converters="clr-namespace:ProjectMobileApp.View"
              x:Class="ProjectMobileApp.View.MainPage">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntEnumConverter x:Key="IntEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand" /> -->
+        <StackLayout>
+            <Label Text="Name"/>
+            <Label BackgroundColor="Red" Text="{Binding NameError}"/>
+            <Entry Text="{Binding Name}"/>
+            <Label Text="Date"/>
+            <Label BackgroundColor="Red" Text=""/>
+            <DatePicker/>
+            <Label Text="Category"/>
+            <Label BackgroundColor="Red" Text=""/>
+            <Picker ItemsSource="{Binding Categories}"/>
+            <!--<Label Text="Amount"/>
+            <Label BackgroundColor="Red" Text="{ Binding AmountError }"/>
+            <Entry Text="{Binding Amount}"/>-->
+        </StackLayout>
+        
     </StackLayout>
 
 </ContentPage>
+    

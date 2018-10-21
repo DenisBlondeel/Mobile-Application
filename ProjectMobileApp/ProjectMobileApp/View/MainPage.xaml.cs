@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectMobileApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace ProjectMobileApp.View
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new PaymentViewModel();
         }
     }
 }

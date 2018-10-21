@@ -55,7 +55,7 @@ namespace ProjectMobileApp.Model
                 }
                 else
                 {
-                    throw new DomainException($"The Category of this Payment is already equal to {value.ToString()}");
+                    //throw new DomainException($"The Category of this Payment is already equal to {value.ToString()}");
                 }
             }
         }
@@ -76,8 +76,12 @@ namespace ProjectMobileApp.Model
         }
 
         // Constructors
-        public Payment(String name, String date, String category, double amount)
-            : this(name, ToDate(date), ToCategory(category), amount)
+        //public Payment(String name, String date, String category, double amount)
+        //    : this(name, ToDate(date), ToCategory(category), amount)
+        //{
+        //}
+        public Payment()
+            : this("Name", DateTime.Now, Category.Food, 1.0)
         {
         }
         public Payment(String name, DateTime date, Category category, double amount)
@@ -102,37 +106,37 @@ namespace ProjectMobileApp.Model
         {
             return IdIncrement++;
         }
-        /// <summary>
-        /// Parses a date in string format to date format. Throws a DomainException if invalid.
-        /// </summary>
-        /// <param name="date">A string representation of a date.</param>
-        /// <returns>A DateTime representation of the given string, if it is valid.</returns>
-        public static DateTime ToDate(String date)
-        {
-            if (DateTime.TryParse(date, out DateTime temp))
-            {
-                return temp;
-            }
-            else
-            {
-                throw new DomainException($"{date} is not a valid date.");
-            }
-        }
-        /// <summary>
-        /// Parses a Category in string format to Category format. Throws a DomainException if invalid.
-        /// </summary>
-        /// <param name="date">A string representation of a Category.</param>
-        /// <returns>A Category representation of the given string, if it is valid.</returns>
-        public static Category ToCategory(String category)
-        {
-            if (Enum.TryParse<Category>(category, out Category temp))
-            {
-                return temp;
-            }
-            else
-            {
-                throw new DomainException($"{category} is not a valid category.");
-            }
-        }
+        ///// <summary>
+        ///// Parses a date in string format to date format. Throws a DomainException if invalid.
+        ///// </summary>
+        ///// <param name="date">A string representation of a date.</param>
+        ///// <returns>A DateTime representation of the given string, if it is valid.</returns>
+        //public static DateTime ToDate(String date)
+        //{
+        //    if (DateTime.TryParse(date, out DateTime temp))
+        //    {
+        //        return temp;
+        //    }
+        //    else
+        //    {
+        //        throw new DomainException($"{date} is not a valid date.");
+        //    }
+        //}
+        ///// <summary>
+        ///// Parses a Category in string format to Category format. Throws a DomainException if invalid.
+        ///// </summary>
+        ///// <param name="date">A string representation of a Category.</param>
+        ///// <returns>A Category representation of the given string, if it is valid.</returns>
+        //public static Category ToCategory(String category)
+        //{
+        //    if (Enum.TryParse<Category>(category, out Category temp))
+        //    {
+        //        return temp;
+        //    }
+        //    else
+        //    {
+        //        throw new DomainException($"{category} is not a valid category.");
+        //    }
+        //}
     }
 }
