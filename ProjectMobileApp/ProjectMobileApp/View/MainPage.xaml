@@ -17,13 +17,13 @@
            VerticalOptions="CenterAndExpand" /> -->
         <StackLayout>
             <Label Text="Name"/>
-            <Label BackgroundColor="Red" Text="{Binding NameError}"/>
+            <Label Text="{Binding NameError}"/>
             <Entry Text="{Binding Name}"/>
             <Label Text="Date"/>
-            <Label BackgroundColor="Red" Text=""/>
+            <Label Text="{Binding DateError}"/>
             <DatePicker/>
             <Label Text="Category"/>
-            <Label BackgroundColor="Red" Text=""/>
+            <Label Text="{Binding CategoryError}"/>
             <Picker ItemsSource="{Binding Categories}"/>
             <!--<Label Text="Amount"/>
             <Label BackgroundColor="Red" Text="{ Binding AmountError }"/>

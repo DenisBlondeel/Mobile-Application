@@ -13,15 +13,52 @@ namespace ProjectMobileApp.ViewModel
         public PaymentService Service { get; set; }
         public Payment CurrentPayment { get; set; }
 
-
-        public String NameError { get; set; }
-        public String DateError { get; set; }
-        public String CategoryError { get; set; }
-        public String AmountError { get; set; }
-
-        //public ICommand AddPaymentCommand;
-
         public event PropertyChangedEventHandler PropertyChanged;
+
+        void onErrorRaised(string error)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(error));
+        }
+
+        public String NameError
+        {
+            get { return NameError; }
+            set { NameError = value; onErrorRaised("test"); }
+        }
+
+        public String DateError
+        {
+            get { return DateError; }
+            set { }
+        }
+
+        public String CategoryError
+        {
+            get { return CategoryError; }
+            set { }
+        }
+
+        public String AmountError
+        {
+            get { return AmountError; }
+            set { }
+        }
+
+        Dictionary<string, string> Errors = new Dictionary<string, string>();
+
+
+        public Command savePaymentCommand { get; }
+
+        public PaymentViewModel()
+        {
+            Service = new PaymentService();
+            CurrentPayment = new Payment();
+            savePaymentCommand = new Command(savePayment);
+            NameError = "";
+            DateError = "";
+            CategoryError = "";
+            AmountError = "";
+        }
 
         public string Name
         {
@@ -31,14 +68,13 @@ namespace ProjectMobileApp.ViewModel
                 try
                 {
                     CurrentPayment.Name = value;
-                    NotifyPropertyChanged("Name");
                     NameError = "";
                 }
                 catch (Exception e)
                 {
                     if (e is DomainException || e is DbException)
                     {
-                        NameError = e.Message;
+                        Errors["NameError"] = e.Message;
                     }
                     else
                     {
@@ -55,13 +91,12 @@ namespace ProjectMobileApp.ViewModel
                 try
                 {
                     CurrentPayment.Date = value;
-                    NotifyPropertyChanged("Date");
                 }
                 catch (Exception e)
                 {
                     if (e is DomainException || e is DbException)
                     {
-                        DateError = e.Message;
+                        Errors["DateError"] = e.Message;
                     }
                     else
                     {
@@ -78,13 +113,12 @@ namespace ProjectMobileApp.ViewModel
                 try
                 {
                     CurrentPayment.Category = value;
-                    NotifyPropertyChanged("Category");
                 }
                 catch (Exception e)
                 {
                     if (e is DomainException || e is DbException)
                     {
-                        CategoryError = e.Message;
+                        Errors["CategoryError"] = e.Message;
                     }
                     else
                     {
@@ -101,13 +135,12 @@ namespace ProjectMobileApp.ViewModel
                 try
                 {
                     CurrentPayment.Amount = value;
-                    NotifyPropertyChanged("Amount");
                 }
                 catch (Exception e)
                 {
                     if (e is DomainException || e is DbException)
                     {
-                        AmountError = e.Message;
+                        Errors["AmountError"] = e.Message;
                     }
                     else
                     {
@@ -125,24 +158,34 @@ namespace ProjectMobileApp.ViewModel
             }
         }
 
-        public PaymentViewModel()
+            INavigation Navigation;
+        void savePayment()
         {
-            Service = new PaymentService();
-            CurrentPayment = new Payment();
-            //AddPaymentCommand = new AddPaymentCommand(this);
-            NameError = "";
-            DateError = "";
-            CategoryError = "";
-            AmountError = "";
-        }
-
-        protected void NotifyPropertyChanged(String info)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
-
-            // https://stackoverflow.com/questions/51780188/the-event-command-canexecutechanged-can-only-appear-on-the-left-hand-side-of
-            // Change canexecute
-            //((Command)AddPaymentCommand).ChangeCanExecute();
+            if(Errors.Count != 0)
+            {
+                foreach (KeyValuePair<string, string> entry in Errors)
+                {
+                    switch (entry.Key)
+                    {
+                        case "NameError":
+                            NameError = entry.Value;
+                            break;
+                        case "DateError":
+                            DateError = entry.Value;
+                            break;
+                        case "CategoryError":
+                            CategoryError = entry.Value;
+                            break;
+                        case "AmountError":
+                            AmountError = entry.Value;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            //Navigation.PushModalAsync;
+            //send object to internal database
         }
 
     }
