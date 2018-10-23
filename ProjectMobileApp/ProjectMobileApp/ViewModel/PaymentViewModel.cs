@@ -189,10 +189,12 @@ namespace ProjectMobileApp.ViewModel
                     }
                 }
                 Errors.Clear();
+                Name = "";
             }
             else
             {
                 Application.Current.MainPage.DisplayAlert("Success!", CurrentPayment.Name + " " + CurrentPayment.Date + " " + CurrentPayment.Category, "Cancel");
+                NameError = "";
                 //send object to internal database
                 //Navigation.PushModalAsync;
             }
