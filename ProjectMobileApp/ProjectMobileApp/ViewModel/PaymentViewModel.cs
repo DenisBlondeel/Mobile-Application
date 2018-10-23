@@ -15,15 +15,17 @@ namespace ProjectMobileApp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        void onErrorRaised(string error)
+        void OnPropertyChanged(string param)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(error));
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(param));
         }
+
+        string nameError = "";
 
         public String NameError
         {
-            get { return NameError; }
-            set { NameError = value; onErrorRaised("test"); }
+            get { return nameError; }
+            set { nameError = value; OnPropertyChanged("NameError");  }
         }
 
         public String DateError
@@ -54,10 +56,7 @@ namespace ProjectMobileApp.ViewModel
             Service = new PaymentService();
             CurrentPayment = new Payment();
             savePaymentCommand = new Command(savePayment);
-            NameError = "";
-            DateError = "";
-            CategoryError = "";
-            AmountError = "";
+            Console.WriteLine(CurrentPayment.Name);
         }
 
         public string Name
@@ -65,10 +64,11 @@ namespace ProjectMobileApp.ViewModel
             get { return CurrentPayment.Name; }
             set
             {
+
                 try
                 {
                     CurrentPayment.Name = value;
-                    NameError = "";
+                    Errors.Remove("NameError");
                 }
                 catch (Exception e)
                 {
@@ -83,6 +83,7 @@ namespace ProjectMobileApp.ViewModel
                 }
             }
         }
+
         public DateTime Date
         {
             get { return CurrentPayment.Date; }
@@ -158,7 +159,8 @@ namespace ProjectMobileApp.ViewModel
             }
         }
 
-            INavigation Navigation;
+           // INavigation Navigation;
+     
         void savePayment()
         {
             if(Errors.Count != 0)
@@ -169,12 +171,15 @@ namespace ProjectMobileApp.ViewModel
                     {
                         case "NameError":
                             NameError = entry.Value;
+                            Console.WriteLine(NameError + " 1");
                             break;
                         case "DateError":
                             DateError = entry.Value;
+                            Console.WriteLine(DateError);
                             break;
                         case "CategoryError":
                             CategoryError = entry.Value;
+                            Console.WriteLine(CategoryError);
                             break;
                         case "AmountError":
                             AmountError = entry.Value;
@@ -183,9 +188,14 @@ namespace ProjectMobileApp.ViewModel
                             break;
                     }
                 }
+                Errors.Clear();
             }
-            //Navigation.PushModalAsync;
-            //send object to internal database
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Success!", CurrentPayment.Name + " " + CurrentPayment.Date + " " + CurrentPayment.Category, "Cancel");
+                //send object to internal database
+                //Navigation.PushModalAsync;
+            }
         }
 
     }
