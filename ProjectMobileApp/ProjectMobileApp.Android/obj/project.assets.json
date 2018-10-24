@@ -781,20 +781,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vince\\.nuget\\packages\\": {}
+    "C:\\Users\\denis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vince\\Documents\\SCHOOL 2018-2019\\[MOB] Mobiele Toepassingen\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.Android\\ProjectMobileApp.Android.csproj",
+      "projectUniqueName": "C:\\Users\\denis\\Source\\Repos\\project-betaalapp\\ProjectMobileApp\\ProjectMobileApp.Android\\ProjectMobileApp.Android.csproj",
       "projectName": "ProjectMobileApp.Android",
-      "projectPath": "C:\\Users\\vince\\Documents\\SCHOOL 2018-2019\\[MOB] Mobiele Toepassingen\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.Android\\ProjectMobileApp.Android.csproj",
-      "packagesPath": "C:\\Users\\vince\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vince\\Documents\\SCHOOL 2018-2019\\[MOB] Mobiele Toepassingen\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.Android\\obj\\",
+      "projectPath": "C:\\Users\\denis\\Source\\Repos\\project-betaalapp\\ProjectMobileApp\\ProjectMobileApp.Android\\ProjectMobileApp.Android.csproj",
+      "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\denis\\Source\\Repos\\project-betaalapp\\ProjectMobileApp\\ProjectMobileApp.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\vince\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -807,8 +807,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "C:\\Users\\vince\\Documents\\SCHOOL 2018-2019\\[MOB] Mobiele Toepassingen\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.csproj": {
-              "projectPath": "C:\\Users\\vince\\Documents\\SCHOOL 2018-2019\\[MOB] Mobiele Toepassingen\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.csproj"
+            "C:\\Users\\denis\\Source\\Repos\\project-betaalapp\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.csproj": {
+              "projectPath": "C:\\Users\\denis\\Source\\Repos\\project-betaalapp\\ProjectMobileApp\\ProjectMobileApp\\ProjectMobileApp.csproj"
             }
           }
         }

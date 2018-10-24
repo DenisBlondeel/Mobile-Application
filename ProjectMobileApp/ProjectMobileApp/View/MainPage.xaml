@@ -14,20 +14,22 @@
         <!-- Place new controls here -->
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" /> -->
-        <StackLayout>
+           VerticalOptions="CenterAndExpand" />-->
+        
+         <StackLayout>
             <Label Text="Name"/>
-            <Label BackgroundColor="Red" Text="{Binding NameError}"/>
             <Entry Text="{Binding Name}"/>
+            <Label TextColor="Red" Text="{Binding NameError, Mode=TwoWay}"/>
             <Label Text="Date"/>
-            <Label BackgroundColor="Red" Text=""/>
+            <!-- <Label Text="{Binding DateError}"/>-->
             <DatePicker/>
             <Label Text="Category"/>
-            <Label BackgroundColor="Red" Text=""/>
+            <!--<Label Text="{Binding CategoryError}"/>-->
             <Picker ItemsSource="{Binding Categories}"/>
             <!--<Label Text="Amount"/>
             <Label BackgroundColor="Red" Text="{ Binding AmountError }"/>
             <Entry Text="{Binding Amount}"/>-->
+            <Button Text="Save" Command="{Binding savePaymentCommand}"/>
         </StackLayout>
         
     </StackLayout>
