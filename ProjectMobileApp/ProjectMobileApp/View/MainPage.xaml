@@ -15,23 +15,29 @@
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
-        
-         <StackLayout>
-            <Label Text="Name"/>
-            <Entry Text="{Binding Name}"/>
-            <Label TextColor="Red" Text="{Binding NameError, Mode=TwoWay}"/>
-            <Label Text="Date"/>
-            <!-- <Label Text="{Binding DateError}"/>-->
-            <DatePicker/>
-            <Label Text="Category"/>
-            <!--<Label Text="{Binding CategoryError}"/>-->
-            <Picker ItemsSource="{Binding Categories}"/>
-            <!--<Label Text="Amount"/>
-            <Label BackgroundColor="Red" Text="{ Binding AmountError }"/>
-            <Entry Text="{Binding Amount}"/>-->
-            <Button Text="Save" Command="{Binding savePaymentCommand}"/>
-        </StackLayout>
-        
+        <ScrollView>
+            <StackLayout>
+
+                <Label Text="Name"/>
+                <Entry Text="{Binding Name.Value}"/>
+                <Label TextColor="Red" Text="{Binding NameError.Value}"/>
+
+                <Label Text="Date"/>
+                <DatePicker Date="{Binding Date.Value}"/>
+                <Label TextColor="Red" Text="{Binding DateError.Value}"/>
+
+                <Label Text="Category"/>
+                <Picker ItemsSource="{Binding Categories}" SelectedIndex="{Binding Category.Value, Converter=IntEnum}"/>
+                <Label TextColor="Red" Text="{Binding CategoryError}"/>
+
+                <Label Text="Amount"/>
+                <Entry Text="{Binding Amount.Value}"/>
+                <Label TextColor="Red" Text="{ Binding AmountError.Value }"/>
+
+                <Button Text="Save" Command="{Binding AddPaymentCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
 
 </ContentPage>

@@ -2,27 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Commands;
+using Cells;
 
 namespace ProjectMobileApp.ViewModel
 {
-    public class AddPaymentCommand : ICommand
+    public class AddPaymentCommand : CellCommand
     {
+
         private PaymentViewModel pvm;
-        public AddPaymentCommand(PaymentViewModel pvm)
+        public AddPaymentCommand(PaymentViewModel pvm, Cell<bool> isEnabled) : base(isEnabled)
         {
             this.pvm = pvm;
         }
 
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
+        public override void Execute(object parameter)
         {
-            return true; // String.IsNullOrEmpty("" + pvm.CategoryError + pvm.AmountError + pvm.DateError + pvm.NameError);
-        }
-
-        public void Execute(object parameter)
-        {
-            //pvm.Service.AddPayment(pvm.CurrentPayment);
+            Console.WriteLine("saving payment");
+            pvm.SavePayment();
         }
     }
 }

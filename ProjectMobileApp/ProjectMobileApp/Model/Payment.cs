@@ -36,7 +36,7 @@ namespace ProjectMobileApp.Model
             {
                 if (value >= DateTime.Now)
                 {
-                    throw new DomainException($"The date has to be in the past.");
+                    //throw new DomainException($"The date has to be in the past.");
                 }
                 else
                 {
