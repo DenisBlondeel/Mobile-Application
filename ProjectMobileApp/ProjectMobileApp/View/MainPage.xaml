@@ -31,7 +31,7 @@
                 <Label TextColor="Red" Text="{Binding CategoryError}"/>
 
                 <Label Text="Amount"/>
-                <Entry Text="{Binding Amount.Value}"/>
+                <Entry Text="{Binding Amount.Value}" Keyboard="Numeric"/>
                 <Label TextColor="Red" Text="{ Binding AmountError.Value }"/>
 
                 <Button Text="Save" Command="{Binding AddPaymentCommand}"/>
