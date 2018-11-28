@@ -5,38 +5,65 @@
              xmlns:converters="clr-namespace:ProjectMobileApp.View"
              x:Class="ProjectMobileApp.View.MainPage">
 
+    
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="TextColor">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Color" Android="#559" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="TextColor">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Color" Android="#449" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <converters:IntEnumConverter x:Key="IntEnum"/>
+            <converters:StringNullOrEmptyBoolConverter x:Key="StringNullOrEmptyBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
+    <StackLayout BackgroundColor="Beige">
         <!-- Place new controls here -->
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
         <ScrollView>
-            <StackLayout>
+            <Grid Padding="0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="1">
+                    <Label Style="{StaticResource labelStyle}" Text="Name"/>
+                    <Entry Style="{StaticResource entryStyle}"  Text="{Binding Name.Value}"/>
+                    <Label IsVisible="{Binding NameError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding NameError.Value}"/>
 
-                <Label Text="Name"/>
-                <Entry Text="{Binding Name.Value}"/>
-                <Label TextColor="Red" Text="{Binding NameError.Value}"/>
+                    <Label Style="{StaticResource labelStyle}" TextColor="#559" Text="Date"/>
+                    <DatePicker Style="{StaticResource entryStyle}" Date="{Binding Date.Value}"/>
+                    <Label IsVisible="{Binding DateError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding DateError.Value}"/>
 
-                <Label Text="Date"/>
-                <DatePicker Date="{Binding Date.Value}"/>
-                <Label TextColor="Red" Text="{Binding DateError.Value}"/>
+                    <Label Style="{StaticResource labelStyle}" Text="Category"/>
+                    <Picker Style="{StaticResource entryStyle}" ItemsSource="{Binding Categories}" SelectedIndex="{Binding Category.Value, Converter=IntEnum}"/>
+                    <Label IsVisible="{Binding CategoryError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding CategoryError.Value}"/>
 
-                <Label Text="Category"/>
-                <Picker ItemsSource="{Binding Categories}" SelectedIndex="{Binding Category.Value, Converter=IntEnum}"/>
-                <Label TextColor="Red" Text="{Binding CategoryError}"/>
+                    <Label Style="{StaticResource labelStyle}" Text="Amount"/>
+                    <Entry Style="{StaticResource entryStyle}" Text="{Binding Amount.Value}" Keyboard="Numeric"/>
+                    <Label IsVisible="{Binding AmountError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{ Binding AmountError.Value }"/>
 
-                <Label Text="Amount"/>
-                <Entry Text="{Binding Amount.Value}" Keyboard="Numeric"/>
-                <Label TextColor="Red" Text="{ Binding AmountError.Value }"/>
+                    <Button BackgroundColor="#D5D5BC" BorderWidth="2" BorderColor="#99C" Style="{StaticResource labelStyle}" Text="Save" Command="{Binding AddPaymentCommand}"/>
 
-                <Button Text="Save" Command="{Binding AddPaymentCommand}"/>
-
-            </StackLayout>
+                </StackLayout>
+            </Grid>
+            
         </ScrollView>
     </StackLayout>
 
