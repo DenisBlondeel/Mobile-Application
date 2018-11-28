@@ -15,8 +15,16 @@
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
-        <StackLayout>
-            <Button x:Name="navigateButton" Text="Overview" Clicked="OnNextPageButtonClicked"/>
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Home" Text="Home"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Overview" Text="Overview" Clicked="GoToOverviewPage"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
+            </StackLayout>
         </StackLayout>
 
             <ScrollView>

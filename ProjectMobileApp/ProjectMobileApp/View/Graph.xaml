@@ -1,17 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjectMobileApp.View.Overview">
+             x:Class="ProjectMobileApp.View.Graph">
     <ContentPage.Content>
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button x:Name="Home" Text="Home" Clicked="GoToHomePage"/>
+                <Button Text="ghome"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                 <Button Text="Overview"/>
-            </StackLayout>
-            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -10,21 +10,21 @@ using Xamarin.Forms.Xaml;
 namespace ProjectMobileApp.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Overview : ContentPage
+	public partial class Graph : ContentPage
 	{
-		public Overview ()
+		public Graph ()
 		{
 			InitializeComponent ();
 		}
 
+        async void GoToOverviewPage(Object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Overview());
+        }
+
         async void GoToHomePage(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
-        }
-
-        async void GoToGraphPage(Object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Graph());
         }
     }
 }

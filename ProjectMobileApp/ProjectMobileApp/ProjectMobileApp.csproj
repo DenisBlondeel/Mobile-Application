@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="View\Graph.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\Overview.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
