@@ -31,17 +31,28 @@
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
-        <ScrollView>
-            <Grid Padding="0,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="8*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="1">
-                    <Label Style="{StaticResource labelStyle}" Text="Name"/>
-                    <Entry Style="{StaticResource entryStyle}"  Text="{Binding Name.Value}"/>
-                    <Label IsVisible="{Binding NameError.Value,
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Home" Text="Home"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Overview" Text="Overview" Clicked="GoToOverviewPage"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
+            </StackLayout>
+        </StackLayout>
+    <ScrollView>
+        <Grid Padding="0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="1">
+                <Label Style="{StaticResource labelStyle}" Text="Name"/>
+                <Entry Style="{StaticResource entryStyle}"  Text="{Binding Name.Value}"/>
+                <Label IsVisible="{Binding NameError.Value,
                                            Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding NameError.Value}"/>
 
                     <Label Style="{StaticResource labelStyle}" TextColor="#559" Text="Date"/>
