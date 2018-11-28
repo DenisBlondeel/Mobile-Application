@@ -15,7 +15,11 @@
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
-        <ScrollView>
+        <StackLayout>
+            <Button x:Name="navigateButton" Text="Overview" Clicked="OnNextPageButtonClicked"/>
+        </StackLayout>
+
+            <ScrollView>
             <StackLayout>
 
                 <Label Text="Name"/>

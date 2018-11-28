@@ -15,5 +15,10 @@ namespace ProjectMobileApp.View
             InitializeComponent();
             BindingContext = new PaymentViewModel();
         }
+
+        async void OnNextPageButtonClicked (Object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Overview());
+        }
     }
 }
