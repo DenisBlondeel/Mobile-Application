@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ProjectMobileApp.Helpers;
 using ProjectMobileApp.Model;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,38 @@ namespace ProjectMobileApp.Services
             var response = await client.PostAsync("http://denisoftware.ddns.net:56789/addUser", content);
 
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> LoginAsync(string email, string password)
+        {
+            var client = new HttpClient();
+
+            var user = new User
+            {
+                Email = email,
+                Password = password
+            };
+
+            var json = JsonConvert.SerializeObject(user);
+
+            HttpContent content = new StringContent(json);
+
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            var response = await client.PostAsync("http://denisoftware.ddns.net:56789/login", content);
+
+            var result = response.Content.ReadAsStringAsync();
+
+            if (result != null)
+            {
+                Settings.Username = result.ToString();
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 }
