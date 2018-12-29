@@ -5,6 +5,9 @@ import me.denisblondeel.ma.server.Domain.User;
 import me.denisblondeel.ma.server.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AuthService {
 
@@ -21,9 +24,17 @@ public class AuthService {
         repository.save(user);
     }
 
-    public User getUser(String username)
+    public User getUser(String email)
     {
-        return repository.findById(username).get();
+        System.out.println(email);
+        return repository.findByEmail(email);
+    }
+
+    public List<User> getAll()
+    {
+        List<User> users = new ArrayList<>();
+        repository.findAll().forEach(users::add);
+        return users;
     }
 
 

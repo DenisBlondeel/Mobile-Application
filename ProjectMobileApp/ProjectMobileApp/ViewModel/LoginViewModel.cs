@@ -1,4 +1,5 @@
-﻿using ProjectMobileApp.Services;
+﻿using ProjectMobileApp.Helpers;
+using ProjectMobileApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace ProjectMobileApp.ViewModel
         public string Password { get; set; }
         public string Message { get; set; }
 
-        public ICommand RegisterCommand
+        public ICommand LoginCommand
         {
             get
             {
@@ -23,11 +24,13 @@ namespace ProjectMobileApp.ViewModel
                 {
                     var isSuccess = await _apiServices.LoginAsync(Email, Password);
 
+                    Console.WriteLine(isSuccess);
+
                     if (isSuccess)
-                        Message = "Successfully successful";
+                        MessagingCenter.Send(this, "login", 200);
                     else
                     {
-                        Message = "Failed";
+                        MessagingCenter.Send(this, "login", 500);
                     }
                 });
             }

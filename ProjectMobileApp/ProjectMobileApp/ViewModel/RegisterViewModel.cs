@@ -27,11 +27,13 @@ namespace ProjectMobileApp.ViewModel
                 {
                     var isSuccess = await _apiServices.RegisterAsync(Email, Password, ConfirmPassword);
 
+                    
+
                     if (isSuccess)
-                        Message = "Successfully registered";
+                    MessagingCenter.Send(this, "registering", 200);
                     else
                     {
-                        Message = "Failed";
+                        MessagingCenter.Send(this, "registering", 500);
                     }
                 });
             }

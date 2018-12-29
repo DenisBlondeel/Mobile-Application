@@ -15,10 +15,9 @@
         <Entry Text="{Binding Password}"
                Placeholder="Password"/>
 
-        <Entry Text="{Binding ConfirmPassword}"
-               Placeholder="ConfirmPassword"/>
+        <Button Text="Login" Command="{Binding LoginCommand}"/>
 
-        <Button Text="Save" Command="{Binding RegisterCommand}"/>
+        <Button x:Name="Register" Text="Register" Clicked="GoToRegisterPage"/>
 
     </StackLayout>
 

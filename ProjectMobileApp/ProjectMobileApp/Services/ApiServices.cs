@@ -18,19 +18,21 @@ namespace ProjectMobileApp.Services
 
             var user = new User
             {
-                Email = email,
-                Password = password,
-                ConfirmPassword = confirmPassword
+                email = email,
+                password = password,
+                confirmPassword = confirmPassword
 
             };
 
             var json = JsonConvert.SerializeObject(user);
 
+            Console.WriteLine(json);
+
             HttpContent content = new StringContent(json);
 
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("http://denisoftware.ddns.net:56789/addUser", content);
+            var response = await client.PostAsync("http://denisoftware.ddns.net:56789/auth/register", content);
 
             return response.IsSuccessStatusCode;
         }
@@ -41,8 +43,8 @@ namespace ProjectMobileApp.Services
 
             var user = new User
             {
-                Email = email,
-                Password = password
+                email = email,
+                password = password
             };
 
             var json = JsonConvert.SerializeObject(user);
@@ -51,19 +53,30 @@ namespace ProjectMobileApp.Services
 
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("http://denisoftware.ddns.net:56789/login", content);
+            var response = await client.PostAsync("http://denisoftware.ddns.net:56789/auth/login", content);
 
-            var result = response.Content.ReadAsStringAsync();
+            
+            var result = await response.Content.ReadAsStringAsync();
+            var resultUser = JsonConvert.DeserializeObject<User>(result);
 
-            if (result != null)
+            if (resultUser == null)
             {
-                Settings.Username = result.ToString();
-                return true;
+                Console.WriteLine("it gon be false");
+                return false;
             }
 
             else
             {
-                return false;
+                if(resultUser.email == null || resultUser.password == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("it gon be true");
+                    Settings.Username = resultUser.email;
+                    return true;
+                }
             }
         }
     }

@@ -3,6 +3,8 @@ import me.denisblondeel.ma.server.Domain.User;
 import me.denisblondeel.ma.server.Service.AuthService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/auth")
@@ -28,11 +30,29 @@ public class AuthController {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public User login(@RequestBody User user)
     {
-        User dbUser = service.getUser(user.getUsername());
-        if( dbUser.equals(user))
+        System.out.println("Request user : " + user);
+        User dbUser = new User();
+        System.out.println("testUser: " + dbUser);
+        try
         {
+            dbUser = service.getUser(user.getEmail());
+            System.out.println("testUser: " + dbUser);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getStackTrace());
+        }
+
+        if( dbUser != null && dbUser.getEmail().equals(user.getEmail()) && dbUser.getPassword().equals(user.getPassword())) {
+            System.out.println("Request user : " + user);
             return user;
         }
-        else return null;
+        else return new User();
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/debug")
+    public List<User> payments() {
+        return service.getAll();
     }
 }
