@@ -55,4 +55,10 @@ public class AuthController {
     public List<User> payments() {
         return service.getAll();
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "/user/{id}")
+    public User getUser(@PathVariable String id) {
+        return service.getUser(id);
+    }
 }
