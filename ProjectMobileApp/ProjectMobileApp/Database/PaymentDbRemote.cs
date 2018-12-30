@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ProjectMobileApp.Model;
 
@@ -8,9 +10,24 @@ namespace ProjectMobileApp.Database
 {
     class PaymentDbRemote : PaymentDb
     {
-        public void AddPayment(Payment payment)
+        HttpClient client;
+
+        public PaymentDbRemote()
         {
-            throw new NotImplementedException();
+            client = new HttpClient();
+
+        }
+
+        public async void AddPayment(Payment payment)
+        {
+            var pm = serialize(payment);
+
+            HttpContent content = new StringContent(pm);
+
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
+            await client.PostAsync("http://denisoftware.ddns.net:56789/payment", content);
+
         }
 
         public void DeletePayment(int id)
@@ -18,14 +35,26 @@ namespace ProjectMobileApp.Database
             throw new NotImplementedException();
         }
 
-        public Payment GetPayment(int id)
+        public async Task<Payment> GetPayment(int id)
         {
-            throw new NotImplementedException();
+            var response = await client.GetAsync("http://denisoftware.ddns.net:56789/payment/" + id);
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            Payment resultPayment = deserialise(result);
+
+            return resultPayment;
         }
 
-        public List<Payment> GetPayments()
+        public async Task<List<Payment>> GetPayments()
         {
-            throw new NotImplementedException();
+            var response = await client.GetAsync("http://denisoftware.ddns.net:56789/payment/");
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            List<Payment> resultPayments = JsonConvert.DeserializeObject<List<Payment>>(result);
+
+            return resultPayments;
         }
 
         public void UpdatePayment(Payment payment)
@@ -38,7 +67,7 @@ namespace ProjectMobileApp.Database
             return JsonConvert.SerializeObject(payment, Formatting.Indented);
         }
 
-        private Payment deserialise(String json)
+        private Payment deserialise(string json)
         {
            return JsonConvert.DeserializeObject<Payment>(json);
         }
