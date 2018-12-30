@@ -46,6 +46,7 @@
     <UseShortFileNames>True</UseShortFileNames>
     <OutputPath>C:\Xamarin\Droid\bin\Debug\</OutputPath>
     <IntermediateOutputPath>C:\Xamarin\Droid\obj\Release\</IntermediateOutputPath>
+    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

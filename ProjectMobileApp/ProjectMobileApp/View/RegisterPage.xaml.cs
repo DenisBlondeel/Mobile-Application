@@ -10,12 +10,13 @@ using Xamarin.Forms.Xaml;
 
 namespace ProjectMobileApp.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
           
         public RegisterPage()
         {
+           
 
             MessagingCenter.Subscribe<RegisterViewModel, int>(this, "registering",(sender, arg) => {
 
@@ -26,10 +27,11 @@ namespace ProjectMobileApp.View
                 }
                 else if(arg == 500)
                 {
-                    DisplayAlert("Error", "Something went wrong, try again", "ok");
+                    DisplayAlert("Error", "Account already exists", "ok");
                 }
             });
             InitializeComponent();
+            BindingContext = new RegisterViewModel();
         }
     }
 }

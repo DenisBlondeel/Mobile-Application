@@ -37,7 +37,7 @@ namespace ProjectMobileApp.View
 
         void GoToOverviewPage()
         {
-            Application.Current.MainPage = new NavigationPage(new Overview());
+            Application.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

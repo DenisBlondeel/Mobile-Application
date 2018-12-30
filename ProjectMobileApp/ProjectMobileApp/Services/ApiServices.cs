@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjectMobileApp.Services
 {
-    class ApiServices
+    public class ApiServices
     {
         internal async Task<bool> RegisterAsync(string email, string password, string confirmPassword)
         {
@@ -32,9 +32,17 @@ namespace ProjectMobileApp.Services
 
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("http://denisoftware.ddns.net:56789/auth/register", content);
+            var exists = await userExists(email);
 
-            return response.IsSuccessStatusCode;
+            if(exists)
+            {
+                return false;
+            }
+            else
+            {
+                var response = await client.PostAsync("http://denisoftware.ddns.net:56789/auth/register", content);
+                return true;
+            }
         }
 
         public async Task<bool> LoginAsync(string email, string password)
@@ -78,6 +86,21 @@ namespace ProjectMobileApp.Services
                     return true;
                 }
             }
+        }
+
+        public async Task<bool> userExists(string email)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://denisoftware.ddns.net:56789/auth/user/" + email);
+            var result = await response.Content.ReadAsStringAsync();
+            var resultUser = JsonConvert.DeserializeObject<User>(result);
+            if (resultUser == null)
+            {
+                Console.WriteLine("it gon be false");
+                return false;
+            }
+            else return true;
+
         }
     }
 }
