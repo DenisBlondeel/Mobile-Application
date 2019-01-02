@@ -15,7 +15,7 @@
                 <Button x:Name="Overview" Text="Overview"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
+                <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
             </StackLayout>
         </StackLayout>
         <ListView ItemsSource="{Binding p}">

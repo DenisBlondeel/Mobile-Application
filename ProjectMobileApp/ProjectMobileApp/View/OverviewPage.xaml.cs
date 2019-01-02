@@ -1,4 +1,5 @@
-﻿using ProjectMobileApp.ViewModel;
+﻿using ProjectMobileApp.Helpers;
+using ProjectMobileApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,12 @@ namespace ProjectMobileApp.View
         async void GoToGraphPage(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Graph());
+        }
+
+         void Logoutt(Object sender, EventArgs e)
+        {
+            Settings.Username = null;
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

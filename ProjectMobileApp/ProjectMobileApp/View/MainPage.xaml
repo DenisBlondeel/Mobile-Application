@@ -39,7 +39,7 @@
                 <Button x:Name="Overview" Text="Overview" Clicked="GoToOverviewPage"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
+                <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
             </StackLayout>
         </StackLayout>
     <ScrollView>
