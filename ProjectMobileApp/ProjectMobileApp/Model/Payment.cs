@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectMobileApp.Helpers;
+using System;
 
 namespace ProjectMobileApp.Model
 {
@@ -10,6 +11,7 @@ namespace ProjectMobileApp.Model
         private DateTime _date { get; set; }
         private Category _category { get; set; }
         private double _amount { get; set; }
+        private string _user { get; set; }
 
         public string name
         {
@@ -27,6 +29,18 @@ namespace ProjectMobileApp.Model
                 {
                     this._name = value;
                 }
+            }
+        }
+
+        public string user
+        {
+            get
+            {
+                return this._user;
+            }
+            set
+            {
+                this._user = value;
             }
         }
         public DateTime date
@@ -81,20 +95,21 @@ namespace ProjectMobileApp.Model
         //{
         //}
         public Payment()
-            : this("Name", DateTime.Now, Category.Food, 1.0)
+            : this("Name", DateTime.Now, Category.Food, 1.0, Settings.Username)
         {
         }
-        public Payment(String name, DateTime date, Category category, double amount)
-            : this(getNewId(), name, date, category, amount)
+        public Payment(String name, DateTime date, Category category, double amount, string user)
+            : this(getNewId(), name, date, category, amount, Settings.Username)
         {
         }
-        public Payment(int id, String name, DateTime date, Category category, double amount)
+        public Payment(int id, String name, DateTime date, Category category, double amount, string user)
         {
             this.Id = id;
             this.name = name;
             this.date = date;
             this.category = category;
             this.amount = amount;
+            this.user = user;
         }
 
         // Static Functions

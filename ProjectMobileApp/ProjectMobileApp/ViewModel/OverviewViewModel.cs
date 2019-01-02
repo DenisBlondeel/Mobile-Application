@@ -27,7 +27,11 @@ namespace ProjectMobileApp.ViewModel
 
             foreach(var data in payments)
             {
-                p.Add(data);
+                if(data.user.Equals(Settings.Username))
+                {
+                    p.Add(data);
+                }
+                
             }
 
         }

@@ -1,5 +1,6 @@
 ﻿using Cells;
 using Commands;
+using ProjectMobileApp.Helpers;
 using ProjectMobileApp.Model;
 using System;
 using System.Collections.Generic;
@@ -102,7 +103,7 @@ namespace ProjectMobileApp.ViewModel
         {
             try
             {
-                Payment p = new Payment(Name.Value, Date.Value, Category.Value, double.Parse(Amount.Value));
+                Payment p = new Payment(Name.Value, Date.Value, Category.Value, double.Parse(Amount.Value), Settings.Username);
                 Service.AddPayment(p);
                 Application.Current.MainPage.DisplayAlert("Success!", Name.Value + " " + Date.Value + " " + Category.Value, "Cancel");
             }
