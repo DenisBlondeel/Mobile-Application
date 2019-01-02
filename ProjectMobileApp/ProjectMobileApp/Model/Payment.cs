@@ -95,6 +95,11 @@ namespace ProjectMobileApp.Model
             }
         }
 
+        public string stringAmount
+        {
+            get { return this._amount.ToString() + "€"; }
+        }
+
         // Constructors
         //public Payment(String name, String date, String category, double amount)
         //    : this(name, ToDate(date), ToCategory(category), amount)

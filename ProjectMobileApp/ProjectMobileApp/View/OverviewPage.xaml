@@ -18,13 +18,16 @@
                 <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
             </StackLayout>
         </StackLayout>
-        <ListView ItemsSource="{Binding p}">
+        <ListView RowHeight="100" ItemsSource="{Binding p}">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding name}"/>
-                        </StackLayout>
+                <DataTemplate >
+                    <ViewCell Height="100">
+                        <Grid>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding date, StringFormat='{}{0:MM/dd/yyyy}'}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding name}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding stringAmount}"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding category}"/>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
