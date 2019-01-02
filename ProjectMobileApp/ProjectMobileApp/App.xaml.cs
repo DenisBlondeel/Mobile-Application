@@ -17,7 +17,7 @@ namespace ProjectMobileApp
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // denis.dob();
         }
 
         protected override void OnSleep()

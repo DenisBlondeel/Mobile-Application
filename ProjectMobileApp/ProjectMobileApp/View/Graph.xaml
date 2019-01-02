@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjectMobileApp.View.Graph">
+             x:Class="ProjectMobileApp.View.Graph"
+             xmlns:oxy ="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms">
     <ContentPage.Content>
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
@@ -12,4 +13,21 @@
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <oxy:PlotView AbsoluteLayout.LayoutFlags="All"
+                          AbsoluteLayout.LayoutBounds="0,0,1,1"
+                          x:Name="plotmodel" Grid.Row="0" Grid.Column="0"/>
+            <StackLayout Grid.Row="1" Grid.Column="1">
+                <Label Text="{Binding}"/>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
 </ContentPage>
