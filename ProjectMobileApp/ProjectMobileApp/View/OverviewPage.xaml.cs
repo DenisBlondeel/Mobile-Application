@@ -20,6 +20,12 @@ namespace ProjectMobileApp.View
             BindingContext = new OverviewViewModel();
         }
 
+        public OverviewPage(string type)
+        {
+            InitializeComponent();
+            BindingContext = new OverviewViewModel(type);
+        }
+
         async void GoToHomePage(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
@@ -30,7 +36,17 @@ namespace ProjectMobileApp.View
             await Navigation.PushAsync(new Graph());
         }
 
-         void Logoutt(Object sender, EventArgs e)
+        async void sortbydate(Object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OverviewPage("date"));
+        }
+
+        async void sortbyprice(Object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OverviewPage("price"));
+        }
+
+        void Logoutt(Object sender, EventArgs e)
         {
             Settings.Username = null;
             Application.Current.MainPage = new NavigationPage(new LoginPage());

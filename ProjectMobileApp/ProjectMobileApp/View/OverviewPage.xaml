@@ -21,10 +21,10 @@
 
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button WidthRequest="75" HeightRequest="40" x:Name="sortbydate" Text="sort by date" Clicked="GoToHomePage"/>
+                <Button WidthRequest="75" HeightRequest="40" Text="sort by date" Clicked="sortbydate"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button WidthRequest="75" HeightRequest="40" x:Name="sortbyprice" Text="sort by price"/>
+                <Button WidthRequest="75" HeightRequest="40" Text="sort by price" Clicked="sortbyprice"/>
             </StackLayout>
         </StackLayout>
 
