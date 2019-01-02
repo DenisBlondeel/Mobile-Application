@@ -1,4 +1,6 @@
-﻿using ProjectMobileApp.Helpers;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ProjectMobileApp.Helpers;
 using System;
 
 namespace ProjectMobileApp.Model
@@ -9,6 +11,8 @@ namespace ProjectMobileApp.Model
         public int Id { get; set; }
         private string _name;
         private string _date { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         private Category _category { get; set; }
         private double _amount { get; set; }
         private string _user { get; set; }
@@ -58,6 +62,8 @@ namespace ProjectMobileApp.Model
                 }
             }
         }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public Category category
         {
             get { return this._category; }
@@ -65,7 +71,7 @@ namespace ProjectMobileApp.Model
             {
                 if (this._category != value)
                 {
-                    this._category = category;
+                    this._category = value;
                 }
                 else
                 {
