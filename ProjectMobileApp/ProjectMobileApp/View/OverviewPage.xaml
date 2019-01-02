@@ -18,16 +18,34 @@
                 <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
             </StackLayout>
         </StackLayout>
+
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button WidthRequest="75" HeightRequest="40" x:Name="sortbydate" Text="sort by date" Clicked="GoToHomePage"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button WidthRequest="75" HeightRequest="40" x:Name="sortbyprice" Text="sort by price"/>
+            </StackLayout>
+        </StackLayout>
+
         <ListView RowHeight="100" ItemsSource="{Binding p}">
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell Height="100">
+                        <!--
                         <Grid>
                             <Label Grid.Row="0" Grid.Column="0" Text="{Binding date, StringFormat='{}{0:MM/dd/yyyy}'}"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding name}"/>
                             <Label Grid.Row="1" Grid.Column="0" Text="{Binding stringAmount}"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="{Binding category}"/>
                         </Grid>
+                        -->
+                        <StackLayout>
+                            <Label Text="{Binding date, StringFormat='{}{0:MM/dd/yyyy}'}"/>
+                            <Label Text="{Binding name}"/>
+                            <Label Text="{Binding stringAmount}"/>
+                            <Label Text="{Binding category}"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
