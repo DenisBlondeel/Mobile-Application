@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectMobileApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace ProjectMobileApp.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Overview : ContentPage
+	public partial class OverviewPage : ContentPage
 	{
-		public Overview ()
+		public OverviewPage ()
 		{
 			InitializeComponent ();
-		}
+            BindingContext = new OverviewViewModel();
+        }
 
         async void GoToHomePage(Object sender, EventArgs e)
         {

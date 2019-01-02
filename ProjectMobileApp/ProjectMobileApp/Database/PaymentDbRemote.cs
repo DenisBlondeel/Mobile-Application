@@ -30,31 +30,21 @@ namespace ProjectMobileApp.Database
 
         }
 
+        public Payment GetPayment(int id)
+        {
+            Payment payment = GetasyncPayment(id).Result;
+            return payment;
+        }
+
+        public List<Payment> GetPayments()
+        {
+            List<Payment> payments = GetAsyncPayments();
+            return payments;
+        }
+
         public void DeletePayment(int id)
         {
             throw new NotImplementedException();
-        }
-
-        public async Task<Payment> GetPayment(int id)
-        {
-            var response = await client.GetAsync("http://denisoftware.ddns.net:56789/payment/" + id);
-
-            var result = response.Content.ReadAsStringAsync().Result;
-
-            Payment resultPayment = deserialise(result);
-
-            return resultPayment;
-        }
-
-        public async Task<List<Payment>> GetPayments()
-        {
-            var response = await client.GetAsync("http://denisoftware.ddns.net:56789/payment/");
-
-            var result = response.Content.ReadAsStringAsync().Result;
-
-            List<Payment> resultPayments = JsonConvert.DeserializeObject<List<Payment>>(result);
-
-            return resultPayments;
         }
 
         public void UpdatePayment(Payment payment)
@@ -70,6 +60,28 @@ namespace ProjectMobileApp.Database
         private Payment deserialise(string json)
         {
            return JsonConvert.DeserializeObject<Payment>(json);
+        }
+
+        private List<Payment> GetAsyncPayments()
+        {
+            var response = client.GetAsync("http://denisoftware.ddns.net:56789/payment/").Result;
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            List<Payment> resultPayments = JsonConvert.DeserializeObject<List<Payment>>(result);
+
+            return resultPayments;
+        }
+
+        private async Task<Payment> GetasyncPayment(int id)
+        {
+            var response = await client.GetAsync("http://denisoftware.ddns.net:56789/payment/" + id);
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            Payment resultPayment = deserialise(result);
+
+            return resultPayment;
         }
 
     }

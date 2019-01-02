@@ -6,16 +6,16 @@ namespace ProjectMobileApp.Model
     {
         private static int IdIncrement = 0;
         public int Id { get; set; }
-        private string name;
-        private DateTime date { get; set; }
-        private Category category { get; set; }
-        private double amount { get; set; }
+        private string _name;
+        private DateTime _date { get; set; }
+        private Category _category { get; set; }
+        private double _amount { get; set; }
 
-        public string Name
+        public string name
         {
             get
             {
-                return this.name;
+                return this._name;
             }
             set
             {
@@ -25,13 +25,13 @@ namespace ProjectMobileApp.Model
                 }
                 else
                 {
-                    this.name = value;
+                    this._name = value;
                 }
             }
         }
-        public DateTime Date
+        public DateTime date
         {
-            get { return this.date; }
+            get { return this._date; }
             set
             {
                 if (value >= DateTime.Now)
@@ -40,18 +40,18 @@ namespace ProjectMobileApp.Model
                 }
                 else
                 {
-                    this.date = value;
+                    this._date = value;
                 }
             }
         }
-        public Category Category
+        public Category category
         {
-            get { return this.category; }
+            get { return this._category; }
             set
             {
-                if (this.category != value)
+                if (this._category != value)
                 {
-                    this.category = Category;
+                    this._category = category;
                 }
                 else
                 {
@@ -59,14 +59,14 @@ namespace ProjectMobileApp.Model
                 }
             }
         }
-        public double Amount
+        public double amount
         {
-            get { return this.amount; }
+            get { return this._amount; }
             set
             {
                 if (value > 0)
                 {
-                    this.amount = value;
+                    this._amount = value;
                 }
                 else
                 {
@@ -91,10 +91,10 @@ namespace ProjectMobileApp.Model
         public Payment(int id, String name, DateTime date, Category category, double amount)
         {
             this.Id = id;
-            this.Name = name;
-            this.Date = date;
-            this.Category = category;
-            this.Amount = amount;
+            this.name = name;
+            this.date = date;
+            this.category = category;
+            this.amount = amount;
         }
 
         // Static Functions

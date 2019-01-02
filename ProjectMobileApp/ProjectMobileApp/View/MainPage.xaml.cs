@@ -18,7 +18,7 @@ namespace ProjectMobileApp.View
 
         async void GoToOverviewPage (Object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Overview());
+            await Navigation.PushAsync(new OverviewPage());
         }
 
         async void GoToGraphPage(Object sender, EventArgs e)

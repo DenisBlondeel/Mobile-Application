@@ -33,6 +33,7 @@
     <UseShortFileNames>True</UseShortFileNames>
     <OutputPath>C:\Xamarin\Droid\bin\Debug\</OutputPath>
     <IntermediateOutputPath>C:\Xamarin\Droid\obj\Debug\</IntermediateOutputPath>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

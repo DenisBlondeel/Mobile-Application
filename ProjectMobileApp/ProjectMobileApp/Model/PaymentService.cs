@@ -10,7 +10,7 @@ namespace ProjectMobileApp.Model
         private PaymentDb payments;
 
         // Constructors
-        public PaymentService() : this("InMemory") { }
+        public PaymentService() : this("SQL") { }
         public PaymentService(String dbType)
         {
             DbFactory dbf = new DbFactory();

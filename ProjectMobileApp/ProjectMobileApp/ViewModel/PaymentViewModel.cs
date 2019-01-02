@@ -38,10 +38,10 @@ namespace ProjectMobileApp.ViewModel
         {
             Service = new PaymentService();
             Payment p = new Payment();
-            this.Name = Cell.Create(p.Name);
-            this.Date = Cell.Create(p.Date);
-            this.Category = Cell.Create(p.Category);
-            this.Amount = Cell.Create(p.Amount.ToString());
+            this.Name = Cell.Create(p.name);
+            this.Date = Cell.Create(p.date);
+            this.Category = Cell.Create(p.category);
+            this.Amount = Cell.Create(p.amount.ToString());
 
             this.NameError = Cell.Derived(Name, ValidateName);
             this.DateError = Cell.Derived(Date, ValidateDate);
