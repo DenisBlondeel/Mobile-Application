@@ -8,7 +8,7 @@ namespace ProjectMobileApp.Model
         private static int IdIncrement = 0;
         public int Id { get; set; }
         private string _name;
-        private DateTime _date { get; set; }
+        private string _date { get; set; }
         private Category _category { get; set; }
         private double _amount { get; set; }
         private string _user { get; set; }
@@ -45,7 +45,7 @@ namespace ProjectMobileApp.Model
         }
         public DateTime date
         {
-            get { return this._date; }
+            get { return Convert.ToDateTime(this._date); }
             set
             {
                 if (value >= DateTime.Now)
@@ -54,7 +54,7 @@ namespace ProjectMobileApp.Model
                 }
                 else
                 {
-                    this._date = value;
+                    this._date = value.ToString();
                 }
             }
         }
