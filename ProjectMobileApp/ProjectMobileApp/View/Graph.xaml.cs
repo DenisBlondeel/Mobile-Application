@@ -40,13 +40,13 @@ namespace ProjectMobileApp.View
             PlotModel pm = new PlotModel
             {
                 Title = "Distribution of Categories",
-                TextColor = OxyColor.FromRgb(122, 122, 122)
+                TextColor = OxyColor.FromRgb(255, 255, 255)
             };
 
             var ps = new PieSeries
             {
                 StrokeThickness = 2,
-                InsideLabelPosition = 0.8,
+                InsideLabelPosition = 0.6,
                 AngleSpan = 360,
                 StartAngle = 0,
                 TextColor = OxyColor.FromRgb(100, 100, 100)
