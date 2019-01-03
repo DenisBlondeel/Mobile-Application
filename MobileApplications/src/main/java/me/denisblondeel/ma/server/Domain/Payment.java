@@ -15,22 +15,23 @@ public class Payment
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private int id;
     private String name;
     private double amount;
-    private LocalDateTime date;
+    private String date;
     private String category;
+    private String user;
 
     public Payment()
     {
 
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,11 +51,11 @@ public class Payment
         this.amount = amount;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -64,6 +65,16 @@ public class Payment
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setUser(String user)
+    {
+        this.user = user;
+    }
+
+    public String getUser()
+    {
+        return user;
     }
 
 

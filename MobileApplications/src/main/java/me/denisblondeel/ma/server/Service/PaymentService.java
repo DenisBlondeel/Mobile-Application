@@ -25,8 +25,18 @@ public class PaymentService {
         return payments;
     }
 
+    public List<Payment> getUserPayments(String username)
+    {
+        System.out.println(username);
+        List<Payment> payments = new ArrayList<>();
 
-    public Payment getPayment(UUID id)
+        repository.findAllByUser(username).forEach(payments::add);
+        System.out.println(payments);
+        return payments;
+    }
+
+
+    public Payment getPayment(int id)
     {
         return repository.findById(id).get();
     }
@@ -36,7 +46,7 @@ public class PaymentService {
         repository.save(payment);
     }
 
-    public void updatePayment(UUID id, Payment payment)
+    public void updatePayment(int id, Payment payment)
     {
         repository.deleteById(id);
         Payment pay = payment;

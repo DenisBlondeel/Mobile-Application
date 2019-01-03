@@ -27,8 +27,16 @@ public class Controller {
     }
 
     @CrossOrigin
+    @RequestMapping("/paymentByUser{user}")
+    public List<Payment> getUserPayments(@PathVariable String user)
+    {
+        System.out.println();
+        return service.getUserPayments(user);
+    }
+
+    @CrossOrigin
     @RequestMapping("/payment/{id}")
-    public Payment getPayment(@PathVariable UUID id)
+    public Payment getPayment(@PathVariable int id)
     {
         return service.getPayment(id);
     }
@@ -43,7 +51,7 @@ public class Controller {
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.PUT, value = "/payment/{id}")
-    public Payment updatePayment(@RequestBody Payment payment, @PathVariable UUID id)
+    public Payment updatePayment(@RequestBody Payment payment, @PathVariable int id)
     {
         service.updatePayment(id, payment);
         return payment;
