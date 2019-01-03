@@ -4,30 +4,27 @@
              x:Class="ProjectMobileApp.View.Graph"
              xmlns:oxy ="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms">
     <ContentPage.Content>
-        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button Text="ghome"/>
-            </StackLayout>
-            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button Text="Overview"/>
-            </StackLayout>
-        </StackLayout>
-    </ContentPage.Content>
-    <StackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
-                <RowDefinition Height="200"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <oxy:PlotView AbsoluteLayout.LayoutFlags="All"
+        <StackLayout BackgroundColor="Beige">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <oxy:PlotView AbsoluteLayout.LayoutFlags="All"
                           AbsoluteLayout.LayoutBounds="0,0,1,1"
                           x:Name="plotmodel" Grid.Row="0" Grid.Column="0"/>
-            <StackLayout Grid.Row="1" Grid.Column="1">
-                <Label Text="{Binding}"/>
-            </StackLayout>
-        </Grid>
-    </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="60,10,40,0">
+                    <StackLayout Orientation="Horizontal">
+                        
+                        <Label Text="{Binding info}" HorizontalOptions="End"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+    
 </ContentPage>

@@ -21,10 +21,13 @@
 
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button WidthRequest="75" HeightRequest="40" Text="sort by date" Clicked="sortbydate"/>
+                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="sort date" Clicked="sortbydate"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button WidthRequest="75" HeightRequest="40" Text="sort by price" Clicked="sortbyprice"/>
+                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="sort price" Clicked="sortbyprice"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="Graphs" Clicked="GoToGraphPage"/>
             </StackLayout>
         </StackLayout>
 

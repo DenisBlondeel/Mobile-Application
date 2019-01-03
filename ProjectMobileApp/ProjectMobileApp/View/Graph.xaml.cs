@@ -39,23 +39,28 @@ namespace ProjectMobileApp.View
         {
             PlotModel pm = new PlotModel
             {
-                Title = "poc",
+                Title = "Distribution of Categories",
                 TextColor = OxyColor.FromRgb(122, 122, 122)
             };
 
             var ps = new PieSeries
             {
-                StrokeThickness = .25,
-                InsideLabelPosition = .25,
+                StrokeThickness = 2,
+                InsideLabelPosition = 0.8,
                 AngleSpan = 360,
                 StartAngle = 0,
                 TextColor = OxyColor.FromRgb(100, 100, 100)
+                
             };
             foreach(var item in plotInfo.Items)
             {
-                ps.Slices.Add(new PieSlice(item.Label, item.Value) { IsExploded = false, Fill = item.Color});
+                ps.Slices.Add(new PieSlice(item.Label, item.Value) { IsExploded = true, Fill = item.Color});
 
             }
+            // ps.InsideLabelFormat = "";
+           // ps.OutsideLabelFormat = "{1}: {0}";
+
+
             pm.Series.Add(ps);
             this.plotmodel.Model = pm;
 
