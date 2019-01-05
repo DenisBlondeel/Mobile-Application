@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ProjectMobileApp"
              xmlns:converters="clr-namespace:ProjectMobileApp.View"
+             xmlns:templates="clr-namespace:ProjectMobileApp.View;assembly=ProjectMobileApp"
              x:Class="ProjectMobileApp.View.MainPage">
 
     
@@ -31,7 +32,8 @@
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
-        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+        <templates:NavigationBar/>
+        <!--<StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                 <Button x:Name="Home" Text="Home"/>
             </StackLayout>
@@ -41,7 +43,7 @@
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                 <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
             </StackLayout>
-        </StackLayout>
+        </StackLayout>-->
     <ScrollView>
         <Grid Padding="0,20">
             <Grid.ColumnDefinitions>
@@ -70,7 +72,7 @@
                     <Label IsVisible="{Binding AmountError.Value,
                                            Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{ Binding AmountError.Value }"/>
 
-                    <Button BackgroundColor="#D5D5BC" BorderWidth="2" BorderColor="#99C" Style="{StaticResource labelStyle}" Text="Save" Command="{Binding AddPaymentCommand}"/>
+                    <Button Margin="20,20,20,0" BackgroundColor="#D5D5BC" BorderWidth="2" BorderColor="#99C" Style="{StaticResource labelStyle}" Text="Save" Command="{Binding AddPaymentCommand}"/>
 
                 </StackLayout>
             </Grid>
