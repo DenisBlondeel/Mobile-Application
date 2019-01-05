@@ -12,12 +12,12 @@ namespace ProjectMobileApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // denis.dob();
         }
 
         protected override void OnSleep()

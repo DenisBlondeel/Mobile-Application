@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectMobileApp.View.LoginPage"
+             xmlns:vm="clr-namespace:ProjectMobileApp.ViewModel">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical">
+
+        <Entry Text="{Binding Email}"
+               Placeholder="Email"/>
+
+        <Entry Text="{Binding Password}"
+               Placeholder="Password"/>
+
+        <Button Text="Login" Command="{Binding LoginCommand}"/>
+
+        <Button x:Name="Register" Text="Register" Clicked="GoToRegisterPage"/>
+
+    </StackLayout>
+
+</ContentPage>

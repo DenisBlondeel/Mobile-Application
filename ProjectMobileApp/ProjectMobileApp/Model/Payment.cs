@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ProjectMobileApp.Helpers;
+using System;
 
 namespace ProjectMobileApp.Model
 {
@@ -6,16 +9,19 @@ namespace ProjectMobileApp.Model
     {
         private static int IdIncrement = 0;
         public int Id { get; set; }
-        private string name;
-        private DateTime date { get; set; }
-        private Category category { get; set; }
-        private double amount { get; set; }
+        private string _name;
+        private string _date { get; set; }
 
-        public string Name
+        [JsonConverter(typeof(StringEnumConverter))]
+        private Category _category { get; set; }
+        private double _amount { get; set; }
+        private string _user { get; set; }
+
+        public string name
         {
             get
             {
-                return this.name;
+                return this._name;
             }
             set
             {
@@ -25,13 +31,25 @@ namespace ProjectMobileApp.Model
                 }
                 else
                 {
-                    this.name = value;
+                    this._name = value;
                 }
             }
         }
-        public DateTime Date
+
+        public string user
         {
-            get { return this.date; }
+            get
+            {
+                return this._user;
+            }
+            set
+            {
+                this._user = value;
+            }
+        }
+        public DateTime date
+        {
+            get { return Convert.ToDateTime(this._date); }
             set
             {
                 if (value >= DateTime.Now)
@@ -40,18 +58,20 @@ namespace ProjectMobileApp.Model
                 }
                 else
                 {
-                    this.date = value;
+                    this._date = value.ToString();
                 }
             }
         }
-        public Category Category
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Category category
         {
-            get { return this.category; }
+            get { return this._category; }
             set
             {
-                if (this.category != value)
+                if (this._category != value)
                 {
-                    this.category = Category;
+                    this._category = value;
                 }
                 else
                 {
@@ -59,14 +79,14 @@ namespace ProjectMobileApp.Model
                 }
             }
         }
-        public double Amount
+        public double amount
         {
-            get { return this.amount; }
+            get { return this._amount; }
             set
             {
                 if (value > 0)
                 {
-                    this.amount = value;
+                    this._amount = value;
                 }
                 else
                 {
@@ -75,26 +95,32 @@ namespace ProjectMobileApp.Model
             }
         }
 
+        public string stringAmount
+        {
+            get { return this._amount.ToString() + "€"; }
+        }
+
         // Constructors
         //public Payment(String name, String date, String category, double amount)
         //    : this(name, ToDate(date), ToCategory(category), amount)
         //{
         //}
         public Payment()
-            : this("Name", DateTime.Now, Category.Food, 1.0)
+            : this("Name", DateTime.Now, Category.Food, 1.0, Settings.Username)
         {
         }
-        public Payment(String name, DateTime date, Category category, double amount)
-            : this(getNewId(), name, date, category, amount)
+        public Payment(String name, DateTime date, Category category, double amount, string user)
+            : this(getNewId(), name, date, category, amount, Settings.Username)
         {
         }
-        public Payment(int id, String name, DateTime date, Category category, double amount)
+        public Payment(int id, String name, DateTime date, Category category, double amount, string user)
         {
             this.Id = id;
-            this.Name = name;
-            this.Date = date;
-            this.Category = category;
-            this.Amount = amount;
+            this.name = name;
+            this.date = date;
+            this.category = category;
+            this.amount = amount;
+            this.user = user;
         }
 
         // Static Functions

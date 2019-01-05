@@ -41,7 +41,7 @@
                 <Button x:Name="Overview" Text="Overview" Clicked="GoToOverviewPage"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button x:Name="Graph" Text="Graph" Clicked="GoToGraphPage"/>
+                <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
             </StackLayout>
         </StackLayout>-->
     <ScrollView>
@@ -63,7 +63,7 @@
                                            Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding DateError.Value}"/>
 
                     <Label Style="{StaticResource labelStyle}" Text="Category"/>
-                    <Picker Style="{StaticResource entryStyle}" ItemsSource="{Binding Categories}" SelectedIndex="{Binding Category.Value, Converter=IntEnum}"/>
+                    <Picker Style="{StaticResource entryStyle}" ItemsSource="{Binding Categories}" SelectedIndex="{Binding Category.Value, Converter={StaticResource IntEnum}}"/>
                     <Label IsVisible="{Binding CategoryError.Value,
                                            Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding CategoryError.Value}"/>
 

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectMobileApp.View.OverviewPage">
+    <StackLayout BackgroundColor="Beige">
+        <!-- Place new controls here -->
+        <!-- <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />-->
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Home" Text="Home" Clicked="GoToHomePage"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Overview" Text="Overview"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="sort date" Clicked="sortbydate"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="sort price" Clicked="sortbyprice"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="Graphs" Clicked="GoToGraphPage"/>
+            </StackLayout>
+        </StackLayout>
+
+        <ListView RowHeight="100" ItemsSource="{Binding p}">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell Height="100">
+                        <!--
+                        <Grid>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding date, StringFormat='{}{0:MM/dd/yyyy}'}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding name}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding stringAmount}"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding category}"/>
+                        </Grid>
+                        -->
+                        <StackLayout>
+                            <Label Text="{Binding date, StringFormat='{}{0:MM/dd/yyyy}'}"/>
+                            <Label Text="{Binding name}"/>
+                            <Label Text="{Binding stringAmount}"/>
+                            <Label Text="{Binding category}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+                  
+    </StackLayout>
+</ContentPage>

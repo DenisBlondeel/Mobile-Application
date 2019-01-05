@@ -16,7 +16,7 @@ namespace ProjectMobileApp.Database
                 case "INMEMORY":
                     return new PaymentDbInMemory();
                 case "SQL":
-                    throw new NotImplementedException();
+                    return new PaymentDbRemote();
                 default:
                     return null;
             }

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProjectMobileApp"
+             xmlns:converters="clr-namespace:ProjectMobileApp.View"
+             x:Class="ProjectMobileApp.View.RegisterPage">
+    
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StringNullOrEmptyBoolConverter x:Key="StringNullOrEmptyBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical">
+
+        <Entry Text="{Binding Email.Value}"
+               Placeholder="Email"/>
+        <Label IsVisible="{Binding EmailError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding EmailError.Value}"/>
+
+
+        <Entry IsPassword="True" Text="{Binding Password.Value}"
+               Placeholder="Password"/>
+        <Label IsVisible="{Binding PasswordError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding PasswordError.Value}"/>
+
+
+       <!-- <Entry IsPassword="True" Text="{Binding ConfirmPassword.Value}"
+               Placeholder="ConfirmPassword"/>
+        <Label IsVisible="{Binding ConfirmPasswordError.Value,
+                                           Converter={StaticResource StringNullOrEmptyBoolConverter}}" TextColor="Red" Text="{Binding ConfirmPasswordError.Value}"/>
+        -->
+
+        <Button Text="Save" Command="{Binding RegisterCommand}"/>
+
+    </StackLayout>
+
+</ContentPage>
+
+
+
+
+
