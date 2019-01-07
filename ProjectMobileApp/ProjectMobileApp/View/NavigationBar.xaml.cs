@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ProjectMobileApp.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,9 +17,9 @@ namespace ProjectMobileApp.View
 			InitializeComponent ();
         }
 
-        async void GoToHomePage(Object sender, EventArgs e)
+        async void GoToOverview(Object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Overview());
+            await Navigation.PushAsync(new OverviewPage());
         }
 
         async void GoToAddPage(Object sender, EventArgs e)
@@ -27,9 +27,15 @@ namespace ProjectMobileApp.View
             await Navigation.PushAsync(new MainPage());
         }
 
-        async void GoToListPage(Object sender, EventArgs e)
+        async void GoToGraph(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Graph());
+        }
+
+        void Logoutt(Object sender, EventArgs e)
+        {
+            Settings.Username = null;
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

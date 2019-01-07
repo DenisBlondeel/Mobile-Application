@@ -25,15 +25,15 @@ namespace ProjectMobileApp.View
             MakePlot();
         }
 
-        async void GoToOverviewPage(Object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new OverviewPage());
-        }
+        //async void GoToOverviewPage(Object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new OverviewPage());
+        //}
 
-        async void GoToHomePage(Object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
+        //async void GoToHomePage(Object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new MainPage());
+        //}
 
         public void MakePlot()
         {

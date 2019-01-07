@@ -17,27 +17,31 @@ namespace ProjectMobileApp.View
             BindingContext = new PaymentViewModel();
         }
 
+        void Handle_Unfocused(object sender, System.EventArgs e)
+        {
+            ((PaymentViewModel)BindingContext).MakeImageRequest();
+        }
 
         //async void GoToOverviewPage (Object sender, EventArgs e)
         //{
         //    await Navigation.PushAsync(new Overview());
         //}
 
-        async void GoToOverviewPage (Object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new OverviewPage());
-        }
+        //async void GoToOverviewPage (Object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new OverviewPage());
+        //}
 
         //async void GoToGraphPage(Object sender, EventArgs e)
         //{
         //    await Navigation.PushAsync(new Graph());
         //}
 
-        void Logoutt(Object sender, EventArgs e)
-        {
-            Settings.Username = null;
-            Application.Current.MainPage = new NavigationPage(new LoginPage());
-        }
+        //void Logoutt(Object sender, EventArgs e)
+        //{
+        //    Settings.Username = null;
+        //    Application.Current.MainPage = new NavigationPage(new LoginPage());
+        //}
 
     }
 }

@@ -1,10 +1,13 @@
 ﻿using Cells;
 using Commands;
+using Plugin.SimpleAudioPlayer;
 using ProjectMobileApp.Helpers;
 using ProjectMobileApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Web;
 using Xamarin.Forms;
 using Cell = Cells.Cell;
 
@@ -25,7 +28,15 @@ namespace ProjectMobileApp.ViewModel
 
         public CellCommand AddPaymentCommand { get; }
 
+        public Cell<Uri> ImageUri { get; }
+        public Cell<bool> ImageVisible { get; }
+        public Cell<bool> LoadingVisible { get; }
+
         public PaymentService Service;
+
+        public ISimpleAudioPlayer player;
+
+        public bool Namechanged;
 
         public List<string> Categories
         {
@@ -49,10 +60,82 @@ namespace ProjectMobileApp.ViewModel
             this.CategoryError = Cell.Derived(Category, ValidateCategory);
             this.AmountError = Cell.Derived(Amount, ValidateAmount);
 
+            this.ImageUri = Cell.Create(new Uri("http://cdn.entropiaplanets.com/w/images/4/4b/Replace-me.png"));
+            this.ImageVisible = Cell.Create(true);
+            this.LoadingVisible = Cell.Derived(ImageVisible, i => !i);
+
+            Category.ValueChanged += PlayCategorySound;
+            Name.ValueChanged += () => { Namechanged = true; };
+            MakeImageRequest();
+
             var enabled = Cell.Derived(new List<Cell<string>> { NameError, DateError, CategoryError, AmountError }, cs => cs.All(c => c == ""));
             this.AddPaymentCommand = new AddPaymentCommand(this, enabled);
 
+            player = CrossSimpleAudioPlayer.Current;
 
+        }
+
+        public async void MakeImageRequest()
+        {
+            if (!this.Namechanged) return;
+            Namechanged = false;
+            this.ImageVisible.Value = false;
+            Uri result = new Uri("https://byvincent.nl/wp-content/themes/consultix/images/no-image-found-360x260.png");
+
+            var client = new HttpClient();
+            var queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            // Request headers
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "931f1d87184c4a868ccd07fbf35cda25");
+
+            // Request parameters
+            queryString["q"] = this.Name.Value;
+            queryString["count"] = "1";
+            queryString["offset"] = "0";
+            queryString["mkt"] = "en-us";
+            queryString["safeSearch"] = "Strict";
+            var uri = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?" + queryString;
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response?.Content != null && response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var toBeSearched = "\"contentUrl\": \"";
+                    if (responseString.IndexOf(toBeSearched) >= 0)
+                    {
+                        string s = responseString.Substring(responseString.IndexOf(toBeSearched) + toBeSearched.Length);
+                        string url = s.Substring(0, s.IndexOf('\"'));
+                        url = url.Replace("\\", "");
+                        Console.WriteLine(url);
+                        Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No image found");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("failed to fetch image: " + response?.StatusCode);
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine("connection timed out");
+            }
+            ImageVisible.Value = true;
+            ImageUri.Value = result;
+        }
+
+        private void PlayCategorySound()
+        {
+            if (player.IsPlaying)
+            {
+                return;
+            }
+
+            player.Load(Category.Value.ToString().ToLower() + ".mp3");
+            player.Play();
         }
 
         private static string ValidateName(string name)
@@ -245,7 +328,7 @@ namespace ProjectMobileApp.ViewModel
         //    }
         //}
 
-        
+
 
         //// INavigation Navigation;
 

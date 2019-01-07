@@ -33,7 +33,7 @@
         -->
 
         <Button Text="Save" Command="{Binding RegisterCommand}"/>
-
+        <ActivityIndicator IsVisible="{Binding IsBusy.Value}" IsRunning="{Binding IsBusy.Value}"></ActivityIndicator>
     </StackLayout>
 
 </ContentPage>

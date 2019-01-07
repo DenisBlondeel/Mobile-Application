@@ -16,8 +16,6 @@ namespace ProjectMobileApp.View
           
         public RegisterPage()
         {
-           
-
             MessagingCenter.Subscribe<RegisterViewModel, int>(this, "registering",(sender, arg) => {
 
                 if(arg == 200)

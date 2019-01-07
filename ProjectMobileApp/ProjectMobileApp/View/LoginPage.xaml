@@ -16,9 +16,8 @@
                Placeholder="Password"/>
 
         <Button Text="Login" Command="{Binding LoginCommand}"/>
-
         <Button x:Name="Register" Text="Register" Clicked="GoToRegisterPage"/>
-
+        <ActivityIndicator IsVisible="{Binding IsBusy.Value}" IsRunning="{Binding IsBusy.Value}"></ActivityIndicator>
     </StackLayout>
 
 </ContentPage>

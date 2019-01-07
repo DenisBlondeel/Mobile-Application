@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjectMobileApp.View.OverviewPage">
+             x:Class="ProjectMobileApp.View.OverviewPage"
+             xmlns:templates="clr-namespace:ProjectMobileApp.View;assembly=ProjectMobileApp">
     <StackLayout BackgroundColor="Beige">
         <!-- Place new controls here -->
         <!-- <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />-->
-        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+        <!--<StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                 <Button x:Name="Home" Text="Home" Clicked="GoToHomePage"/>
             </StackLayout>
@@ -17,7 +18,8 @@
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                 <Button x:Name="Logout" Text="Logout" Clicked="Logoutt"/>
             </StackLayout>
-        </StackLayout>
+        </StackLayout>-->
+        <templates:NavigationBar/>
 
         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">

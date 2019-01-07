@@ -16,7 +16,6 @@ namespace ProjectMobileApp.View
 		public LoginPage ()
 		{
             MessagingCenter.Subscribe<LoginViewModel, int>(this, "login", (sender, arg) => {
-
                 if (arg == 200)
                 {
                     GoToOverviewPage();

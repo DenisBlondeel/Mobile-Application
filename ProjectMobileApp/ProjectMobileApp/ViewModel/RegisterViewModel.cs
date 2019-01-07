@@ -4,11 +4,7 @@ using ProjectMobileApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Cell = Cells.Cell;
 
@@ -33,21 +29,23 @@ namespace ProjectMobileApp.ViewModel
 
         public CellCommand RegisterCommand { get; }
 
+        public Cell<bool> IsBusy { get; }
+
         public RegisterViewModel()
         {
-           _apiServices = new ApiServices();
+            _apiServices = new ApiServices();
 
             this.Email = Cell.Create("example@example.com");
             this.Password = Cell.Create("testt");
-           // this.ConfirmPassword = Cell.Create("testt");
+            // this.ConfirmPassword = Cell.Create("testt");
 
             this.EmailError = Cell.Derived(Email, validateEmail);
             this.PasswordError = Cell.Derived(Password, validatePassword);
-          // this.ConfirmPassword = Cell.Derived(Password, validateConfirmPassword);
+            // this.ConfirmPassword = Cell.Derived(Password, validateConfirmPassword);
 
-            var enabled = Cell.Derived(new List<Cell<string>> { EmailError, PasswordError}, cs => cs.All(c => c == ""));
+            var enabled = Cell.Derived(new List<Cell<string>> { EmailError, PasswordError }, cs => cs.All(c => c == ""));
             this.RegisterCommand = new RegisterCommand(this, enabled);
-
+            this.IsBusy = Cell.Create(false);
 
         }
 
@@ -61,14 +59,20 @@ namespace ProjectMobileApp.ViewModel
 
         private string validateEmail(string email)
         {
-            if(email.Length == 0)
+            if (email.Length == 0)
             {
                 return "email can not be empty";
             }
             else if (email.Length > 0)
             {
-                if (Regex.IsMatch(email, MatchEmailPattern)) return "";
-                else return "Invalid Email";
+                if (Regex.IsMatch(email, MatchEmailPattern))
+                {
+                    return "";
+                }
+                else
+                {
+                    return "Invalid Email";
+                }
             }
             else
             {
@@ -87,7 +91,7 @@ namespace ProjectMobileApp.ViewModel
 
         private static string validatePassword(string password)
         {
-            if(password.Length < 5)
+            if (password.Length < 5)
             {
                 return "Password must be at least 5 characters long";
             }
@@ -97,31 +101,33 @@ namespace ProjectMobileApp.ViewModel
             }
         }
 
-       /* private  string validateConfirmPassword(string password)
+        /* private  string validateConfirmPassword(string password)
+         {
+             if (password.Equals(ConfirmPassword.Value))
+             {
+                 return "Confirm password must match password";
+             }
+             else
+             {
+                 return "";
+             }
+         }*/
+
+        internal async void Register()
         {
-            if (password.Equals(ConfirmPassword.Value))
+            this.IsBusy.Value = true;
+            bool isSuccess = await _apiServices.RegisterAsync(Email.Value, Password.Value, "");
+            this.IsBusy.Value = false;
+
+
+            if (isSuccess)
             {
-                return "Confirm password must match password";
+                MessagingCenter.Send(this, "registering", 200);
             }
             else
             {
-                return "";
+                MessagingCenter.Send(this, "registering", 500);
             }
-        }*/
-
-        internal async void Register()
-        { 
-       
-                    bool isSuccess = await _apiServices.RegisterAsync(Email.Value, Password.Value, "");
-
-                    
-
-                    if (isSuccess)
-                    MessagingCenter.Send(this, "registering", 200);
-                    else
-                    {
-                        MessagingCenter.Send(this, "registering", 500);
-                    }
         }
     }
 
