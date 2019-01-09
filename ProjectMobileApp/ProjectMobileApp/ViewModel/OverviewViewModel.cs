@@ -38,7 +38,7 @@ namespace ProjectMobileApp.ViewModel
                     break;
 
                 case "date":
-                    List<Payment> dateList = payments.OrderBy(o => o.date).ToList();
+                    List<Payment> dateList = payments.OrderByDescending(o => o.date).ToList();
                     payments = dateList;
                     getListFromUser();
                     break;
