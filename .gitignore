@@ -1,4 +1,6 @@
 ProjectMobileApp/ProjectMobileApp/obj
 ProjectMobileApp/ProjectMobileApp/bin
-ProjectMobileApp/ProjectMobileApp.Android
+ProjectMobileApp/ProjectMobileApp.Android/*
+!ProjectMobileApp/ProjectMobileApp.Android/Assets
 .vs
+
