@@ -12,7 +12,7 @@
         <Entry Text="{Binding Email}"
                Placeholder="Email"/>
 
-        <Entry Text="{Binding Password}"
+        <Entry IsPassword="True" Text="{Binding Password}"
                Placeholder="Password"/>
 
         <Button Text="Login" Command="{Binding LoginCommand}"/>

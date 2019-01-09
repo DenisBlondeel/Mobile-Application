@@ -40,7 +40,7 @@ namespace ProjectMobileApp.View
             PlotModel pm = new PlotModel
             {
                 Title = "Distribution of Categories",
-                TextColor = OxyColor.FromRgb(255, 255, 255)
+                TextColor = OxyColor.FromRgb(0, 0, 0)
             };
 
             var ps = new PieSeries
@@ -49,7 +49,8 @@ namespace ProjectMobileApp.View
                 InsideLabelPosition = 0.6,
                 AngleSpan = 360,
                 StartAngle = 0,
-                TextColor = OxyColor.FromRgb(100, 100, 100)
+                TextColor = OxyColor.FromRgb(161, 161, 161)
+                
                 
             };
             foreach(var item in plotInfo.Items)
@@ -57,6 +58,7 @@ namespace ProjectMobileApp.View
                 ps.Slices.Add(new PieSlice(item.Label, item.Value) { IsExploded = true, Fill = item.Color});
 
             }
+
             // ps.InsideLabelFormat = "";
            // ps.OutsideLabelFormat = "{1}: {0}";
 

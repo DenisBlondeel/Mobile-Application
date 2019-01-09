@@ -28,9 +28,6 @@
             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                 <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="sort price" Clicked="sortbyprice"/>
             </StackLayout>
-            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                <Button FontSize="Micro" WidthRequest="70" HeightRequest="40" Text="Graphs" Clicked="GoToGraphPage"/>
-            </StackLayout>
         </StackLayout>
 
         <ListView RowHeight="100" ItemsSource="{Binding p}">

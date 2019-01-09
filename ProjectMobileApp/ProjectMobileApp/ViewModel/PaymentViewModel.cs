@@ -188,10 +188,11 @@ namespace ProjectMobileApp.ViewModel
             {
                 Payment p = new Payment(Name.Value, Date.Value, Category.Value, double.Parse(Amount.Value), Settings.Username);
                 Service.AddPayment(p);
-                Application.Current.MainPage.DisplayAlert("Success!", Name.Value + " " + Date.Value + " " + Category.Value, "Cancel");
+                Application.Current.MainPage.DisplayAlert("Success!", Name.Value + " " + Date.Value + " " + Category.Value, "ok");
             }
             catch (Exception e)
             {
+                Application.Current.MainPage.DisplayAlert("Something went wrong!", "Unknown error, try again", "ok");
                 Console.WriteLine("ERROR : " + e.Message);
             }
         }
